@@ -1,0 +1,17 @@
+{
+  "name": "Tic-Tac-Toe Game",
+  "short_name": "Tic-Tac-Toe",
+  "description": "Simply a Tic-Toc-Toe Game... just it",
+  "icons": [
+    {
+      "src": "img/imagem.png",
+      "sizes": "XxX",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF"
+}

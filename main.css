@@ -1,0 +1,56 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+
+/* SHOW MODAL IOS ONLY */
+#iosAlertBoxWebApp{
+    position: absolute;
+    bottom: -8vh;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    opacity: 0;
+    display: none;
+}
+
+#iosAlertBoxWebApp i{
+    font-size: 6vh;
+    color: gray;
+    margin: 5px;
+}
+
+#iosAlertBoxWebApp::after{
+    content: '';
+    align-self: center;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid lightgray;
+}
+
+#actualContent{
+    height: 8vh;
+    width: 95vw;
+    padding: 5px;
+    font-size: 4.3vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+@keyframes showiOSModal{
+    10%, 90%{
+        transform: translateY(-16vh);
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 0;
+    }
+}
+/* ^ MODAL IOS ^ */
