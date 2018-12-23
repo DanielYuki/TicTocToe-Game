@@ -5,7 +5,17 @@ body{
     font-family: sans-serif;
 }
 
+table{
+    height: 90vw;
+    width: 90vw;
+    border: solid black 2px;
+}
 
+th{
+    border: solid black 1px;
+    width: 33.3%;
+    height: 33.3%;
+}
 /* SHOW MODAL IOS ONLY */
 #iosAlertBoxWebApp{
     position: absolute;
