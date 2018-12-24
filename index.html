@@ -57,14 +57,21 @@
         rel="apple-touch-startup-image" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        defer>
     <script src="main.js" defer></script>
 
 </head>
 
 <body>
-    <div>
+    <section>
+        <div>
+            <label for="player1Symbol">Your Symbol Here:</label>
+            <input id="player1Symbol" name="player1Symbol" type="text" placeholder="(❌ Default)">
+            <label for="player2Symbol">Your Symbol Here:</label>
+            <input id="player2Symbol" name="player2Symbol" type="text" placeholder="(⭕ Default)">
+        </div>
+        <button class="startGame">GO</button>
+    </section>
+    <section>
         <table>
             <tr>
                 <th class="slot"></th>
@@ -82,12 +89,15 @@
                 <th class="slot"></th>
             </tr>
         </table>
-    </div>
+    </section>
     <!-- MODAL POPUP, VISIBLE ONLY FOR IOS USERS -->
     <div id="iosAlertBoxWebApp">
         <div id="actualContent">
-            <i class="fa fa-plus-square" aria-hidden="true"></i>
-            <span>Install this WebApp on your iPhone: tap on Share Button then add to HomeScreen.</span>
+            <div id="plusSquare">
+                <div></div>
+                <div></div>
+            </div>
+            <span id="alertIOS">Install this WebApp on your iPhone: tap on Share Button then add to HomeScreen.</span>
         </div>
     </div>
 </body>

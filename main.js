@@ -1,19 +1,33 @@
 let slots = document.querySelectorAll('.slot')
-
 for (let slot of slots) {
     slot.onclick = check
 }
 
+let player1Symbol = document.querySelector('#player1Symbol');
+let player2Symbol = document.querySelector('#player2Symbol');
+let startGame = document.querySelector('.startGame');
+
+startGame.onclick = () => {
+    if (player1Symbol.value == '') {
+        player1Symbol.value = '❌'
+    }
+    if (player2Symbol.value == '') {
+        player2Symbol.value = '⭕'
+    }
+    console.log(player1Symbol.value)
+    console.log(player2Symbol.value)
+}
+
 let turn = 0
 function check() {
-    if (this.textContent == 'X' || this.textContent == 'O') {
+    if (this.textContent == player1Symbol.value || this.textContent == player2Symbol.value) {
         console.log('ja fui cricado')
     } else {
         turn++
         if (turn % 2) {
-            this.textContent = 'X';
+            this.textContent = player1Symbol.value;
         } else {
-            this.textContent = 'O'
+            this.textContent = player2Symbol.value
         }
         verify()
     }
@@ -32,10 +46,10 @@ function verify() {
             slot.onclick = null;
         }
         if (turn % 2) {
-            console.log('ok')
+            console.log(`${player1Symbol.value} Win`)
         }
         else {
-            console.log('thomsom')
+            console.log(`${player2Symbol.value} Win`)
         }
     }
     else if (turn === 9) {
