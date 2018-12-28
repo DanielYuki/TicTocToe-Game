@@ -1,21 +1,79 @@
 body{
-    width: 100vw;
-    height: 100vh;
     margin: 0;
     font-family: sans-serif;
+    background-color: #252630;
+}
+
+header{
+    height: 10vh;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+h1{
+    margin: 0;
+}
+
+section{
+    justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    width: 100vw;
+    height: 90vh;
 }
 
 table{
     height: 90vw;
     width: 90vw;
-    border: solid black 2px;
+    /* border: solid white 1px; */
+    background-color: white;
 }
 
 th{
-    border: solid black 1px;
+    /* border: solid white 1px; */
+    background-color: #252630;
     width: 33.3%;
     height: 33.3%;
 }
+
+.scoreTable{
+    width: 35vw;
+    padding: 10px;
+    justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+    border: solid 2px white;
+    font-size: 20pt;
+}
+
+.scoreTable::before ,.scoreTable::after {
+    padding: 5px;
+    background-color: rgb(255, 42, 42);
+    display: flex;
+    margin: 0 8vw;
+    font-size: 10pt;
+}
+
+.scoreTable::before{
+    content: 'Player1';
+}
+
+.scoreTable::after{
+    content: 'Player2';
+}
+
+.points{
+    padding: 2px;
+    font-size: 20pt;
+
+}
+
+
+
 /* SHOW MODAL IOS ONLY */
 #iosAlertBoxWebApp{
     position: absolute;

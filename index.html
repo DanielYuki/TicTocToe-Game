@@ -62,12 +62,19 @@
 </head>
 
 <body>
+    <header>
+        <h1>❌ Tic Tac Toe ⭕</h1>
+    </header>
     <section>
         <div>
-            <label for="player1Symbol">Your Symbol Here:</label>
-            <input id="player1Symbol" name="player1Symbol" type="text" placeholder="(❌ Default)">
-            <label for="player2Symbol">Your Symbol Here:</label>
-            <input id="player2Symbol" name="player2Symbol" type="text" placeholder="(⭕ Default)">
+            <div>
+                <label for="player1Symbol">Your Symbol Here:</label>
+                <input id="player1Symbol" name="player1Symbol" type="text" placeholder="(❌ Default)">
+            </div>
+            <div>
+                <label for="player2Symbol">Your Symbol Here:</label>
+                <input id="player2Symbol" name="player2Symbol" type="text" placeholder="(⭕ Default)">
+            </div>
         </div>
         <button class="startGame">GO</button>
     </section>
@@ -89,6 +96,11 @@
                 <th class="slot"></th>
             </tr>
         </table>
+        <div class="scoreTable">
+            <div id="p1Points" class="points">0</div>
+            :
+            <div id="p2Points" class="points">0</div>
+        </div>
     </section>
     <!-- MODAL POPUP, VISIBLE ONLY FOR IOS USERS -->
     <div id="iosAlertBoxWebApp">
