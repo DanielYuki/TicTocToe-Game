@@ -6,6 +6,14 @@ for (let slot of slots) {
 let player1Symbol = document.querySelector('#player1Symbol');
 let player2Symbol = document.querySelector('#player2Symbol');
 let startGame = document.querySelector('.startGame');
+let game = document.querySelector('#actualGame')
+
+let showSettings = document.querySelector('#upAndDown');
+let settings = document.querySelector('aside')
+
+showSettings.onclick = () => {
+    settings.classList.toggle('showSettings')
+}
 
 startGame.onclick = () => {
     if (player1Symbol.value == '') {

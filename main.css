@@ -5,20 +5,67 @@ body{
 }
 
 header{
-    height: 10vh;
-    background-color: white;
-    justify-content: center;
-    align-items: center;
     display: flex;
+    text-align: center;
 }
 
 h1{
+    font-size: 11.5vw;
+    height: 10vh;
+    width: 100%;
+    z-index: 3 !important;
+    background-color: white;
     margin: 0;
 }
 
-section{
-    justify-content: space-evenly;
+aside{
     display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 50vh;
+    flex-direction: column;
+    transform: translateY(0);
+    transition: 0.5s ease-in-out;
+}
+
+.showSettings{
+    transform: translateY(-90%);
+}
+
+aside > div{
+    display: flex;
+    background-color: white;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 10px 10px;
+}
+
+aside input{
+    width: 24.5vw;
+}
+
+#upAndDown{
+    width: 90px;
+    height: 25px;
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+    align-self: center;
+}
+
+#upAndDown::after{
+    content: '';
+    width: 50%;
+    height: 5px;
+    border-radius: 10px;
+    background-color: #252630;
+}
+
+#actualGame{
+    display: flex;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
     color: white;
@@ -29,12 +76,10 @@ section{
 table{
     height: 90vw;
     width: 90vw;
-    /* border: solid white 1px; */
     background-color: white;
 }
 
 th{
-    /* border: solid white 1px; */
     background-color: #252630;
     width: 33.3%;
     height: 33.3%;
