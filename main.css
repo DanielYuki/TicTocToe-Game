@@ -13,7 +13,7 @@ h1{
     font-size: 11.5vw;
     height: 10vh;
     width: 100%;
-    z-index: 3 !important;
+    z-index: 5 !important;
     background-color: white;
     margin: 0;
 }
@@ -24,12 +24,39 @@ aside{
     width: 100vw;
     height: 50vh;
     flex-direction: column;
-    transform: translateY(-95%);
+    transform: translateY(-90%);
     transition: 0.5s cubic-bezier(.95,-0.33,1,1.01);
+    z-index: 3 !important;
 }
 
 .showSettings{
     transform: translateY(-5%);
+}
+
+.blurTableGame{
+    filter: blur(5px);
+}
+
+.shake{
+    transform: translateX(0);
+}
+
+@keyframes shake{
+    20%{
+        transform: translateX(5%);
+    }
+    40%{
+        transform: translateX(-5%);
+    }
+    60%{
+        transform: translateX(5%);
+    }
+    80%{
+        transform: translateX(-5%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
 }
 
 aside > div{
@@ -71,6 +98,7 @@ aside input{
     color: white;
     width: 100vw;
     height: 90vh;
+    transition: 0.25s ease-in;
 }
 
 table{
@@ -80,8 +108,11 @@ table{
     font-size: 20vw;
 }
 
-th{
+tr{
     background-color: #252630;
+}
+
+th{
     width: 33.3%;
     height: 33.3%;
 }

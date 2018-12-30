@@ -15,7 +15,8 @@ let showSettings = document.querySelector('#upAndDown');
 let settings = document.querySelector('aside')
 
 showSettings.onclick = () => {
-    settings.classList.toggle('showSettings')
+    settings.classList.toggle('showSettings');
+    game.classList.toggle('blurTableGame');
 }
 
 applyChanges.onclick = () => {
@@ -37,6 +38,7 @@ let turn = 0
 function check() {
     if (this.textContent == player1Symbol || this.textContent == player2Symbol) {
         console.log('ja fui cricado')
+        addAnimation(this);
     } else {
         turn++
         if (turn % 2) {
@@ -46,6 +48,11 @@ function check() {
         }
         verify()
     }
+}
+
+function addAnimation(thisSlot){
+    thisSlot.style.animation = 'shake 1s ease-in-out'
+    setTimeout(gambiarra01 = () => {thisSlot.style.animation = ''},1500)
 }
 
 let player1Point = 0, player2Point = 0;
@@ -71,11 +78,11 @@ function verify() {
             let p2Points = document.querySelector('#p2Points')
             p2Points.textContent = player2Point;
         }
-        reset()
+        setTimeout(reset,1500)
     }
     else if (turn === 9) {
         console.log('old')
-        reset()
+        setTimeout(reset,1500)
     }
 }
 
