@@ -15,18 +15,24 @@ h1{
     width: 100%;
     z-index: 5 !important;
     background-color: white;
-    margin: 0;
 }
 
 h3{
     font-size: 9.5vw;
-    margin: 0;
     border-bottom: solid 5px black;
     letter-spacing: 1px;
     padding: 1px;
 }
 
-h2,h4,h5,h6{
+h4,h5{
+    font-size: 6vw;
+}
+
+h5{
+
+}
+
+h1,h2,h3,h4,h5,h6{
     margin: 0;
 }
 
@@ -34,7 +40,7 @@ aside{
     display: flex;
     position: absolute;
     width: 100vw;
-    height: 55vh;
+    height: 65vh;
     flex-direction: column;
     transform: translateY(-90%);
     transition: 0.5s cubic-bezier(.95,-0.33,1,1.01);
@@ -84,11 +90,13 @@ aside > div{
 
 .symbolsInput div{
     padding: 2px;
+    font-size: 5.5vw;
 }
 
 aside input{
     padding: 2px;
     width: 6vw;
+    font-size: 4.5vw;
 }
 
 .roundBtn{
@@ -106,12 +114,73 @@ aside input{
 }
 
 .roundBtn button{
-    width: 30%;
-    border-radius: 10px;
+    width: 15vw;
+    height: 15vw;
+    background-color: white;
+    margin: 0;
+    border: solid 0.5px lightgray;
+    font-size: 6vw;
+    /* border-radius: 10px; */
 }
 
+.cpuDiv{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 80%;
+}
+
+/* SWITCH CPU BUTTON */
+.onoffswitch {
+    position: relative; width: 75px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 50px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 18px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 5px;
+    background-color: #EEEEEE; color: #000000;
+}
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 5px;
+    background-color: #EEEEEE; color: #000000;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 24px; margin: 3px;
+    background: #A1A1A1;
+    position: absolute; top: 0; bottom: 0;
+    right: 41px;
+    border: 2px solid #999999; border-radius: 50px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+    background-color: #27A1CA; 
+}
+/* ---------------- */
+
 .applyChanges{
-    width: 25%;
+    width: 50%;
     border-radius: 10px;
     padding: 5px;
 }
