@@ -18,11 +18,23 @@ h1{
     margin: 0;
 }
 
+h3{
+    font-size: 9.5vw;
+    margin: 0;
+    border-bottom: solid 5px black;
+    letter-spacing: 1px;
+    padding: 1px;
+}
+
+h2,h4,h5,h6{
+    margin: 0;
+}
+
 aside{
     display: flex;
     position: absolute;
     width: 100vw;
-    height: 50vh;
+    height: 55vh;
     flex-direction: column;
     transform: translateY(-90%);
     transition: 0.5s cubic-bezier(.95,-0.33,1,1.01);
@@ -34,7 +46,7 @@ aside{
 }
 
 .blurTableGame{
-    filter: blur(5px);
+    filter: blur(10px);
 }
 
 .shake{
@@ -70,8 +82,38 @@ aside > div{
     border-radius: 0 0 10px 10px;
 }
 
+.symbolsInput div{
+    padding: 2px;
+}
+
 aside input{
-    width: 24.5vw;
+    padding: 2px;
+    width: 6vw;
+}
+
+.roundBtn{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.roundBtn > div{
+    justify-content: space-evenly;
+    align-items: center;
+    display: flex;
+    width: 100%;
+}
+
+.roundBtn button{
+    width: 30%;
+    border-radius: 10px;
+}
+
+.applyChanges{
+    width: 25%;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 #upAndDown{
