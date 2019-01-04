@@ -114,13 +114,20 @@ aside input{
 }
 
 .roundBtn button{
-    width: 15vw;
-    height: 15vw;
+    width: 13vw;
+    height: 13vw;
     background-color: white;
     margin: 0;
     border: solid 0.5px lightgray;
     font-size: 6vw;
-    /* border-radius: 10px; */
+    transition: 0.25s;
+}
+
+.selected{
+    background-color: #E1E1E1 !important;
+    /* color: white; */
+    border-bottom: 1px solid #27A1CA !important;
+    font-size: 6.5vw !important;
 }
 
 .cpuDiv{

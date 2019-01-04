@@ -3,8 +3,11 @@ for (let slot of slots) {
     slot.onclick = check
 }
 
+let player1Point = 0, player2Point = 0;
 let player1SymbolInput = document.querySelector('#player1Symbol');
 let player2SymbolInput = document.querySelector('#player2Symbol');
+let p1Points = document.querySelector('#p1Points')
+let p2Points = document.querySelector('#p2Points')
 let player1Symbol = '❌';
 let player2Symbol = '⭕';
 
@@ -14,6 +17,28 @@ let game = document.querySelector('#actualGame')
 let showSettings = document.querySelector('#upAndDown');
 let settings = document.querySelector('aside')
 
+let bestOf1 = document.querySelector('#match1');
+let bestOf3 = document.querySelector('#match3');
+let bestOf5 = document.querySelector('#match5');
+
+bestOf1.onclick = () => {
+    bestOf1.classList.toggle('selected');
+    bestOf3.classList.remove('selected');
+    bestOf5.classList.remove('selected');
+}
+
+bestOf3.onclick = () => {
+    bestOf3.classList.toggle('selected');
+    bestOf1.classList.remove('selected');
+    bestOf5.classList.remove('selected');
+}
+
+bestOf5.onclick = () => {
+    bestOf5.classList.toggle('selected');
+    bestOf3.classList.remove('selected');
+    bestOf1.classList.remove('selected');
+}
+
 showSettings.onclick = () => {
     settings.classList.toggle('showSettings');
     game.classList.toggle('blurTableGame');
@@ -22,14 +47,15 @@ showSettings.onclick = () => {
 applyChanges.onclick = () => {
     if (player1SymbolInput.value == '') {
         player1SymbolInput.value = '❌'
-    }else{
+    } else {
         player1Symbol = player1SymbolInput.value
     }
     if (player2SymbolInput.value == '') {
         player2SymbolInput.value = '⭕'
-    }else{
+    } else {
         player2Symbol = player2SymbolInput.value
     }
+    hardReset();
     console.log(player1Symbol)
     console.log(player2Symbol)
 }
@@ -50,12 +76,11 @@ function check() {
     }
 }
 
-function addAnimation(thisSlot){
+function addAnimation(thisSlot) {
     thisSlot.style.animation = 'shake 1s ease-in-out'
-    setTimeout(gambiarra01 = () => {thisSlot.style.animation = ''},1500)
+    setTimeout(gambiarra01 = () => { thisSlot.style.animation = '' }, 1500)
 }
 
-let player1Point = 0, player2Point = 0;
 function verify() {
     if (validator(slots[0], slots[1], slots[2]) ||
         validator(slots[3], slots[4], slots[5]) ||
@@ -70,28 +95,33 @@ function verify() {
         }
         if (turn % 2) {
             player1Point++
-            let p1Points = document.querySelector('#p1Points')
             p1Points.textContent = player1Point;
         }
         else {
             player2Point++
-            let p2Points = document.querySelector('#p2Points')
             p2Points.textContent = player2Point;
         }
-        setTimeout(reset,1500)
+        setTimeout(bestOf,100);
     }
     else if (turn === 9) {
         console.log('old')
-        setTimeout(reset,1500)
+        setTimeout(reset, 1500)
     }
 }
 
 function reset() {
-    player1Point, player2Point, turn = 0;
+    turn = 0;
     for (let slot of slots) {
         slot.textContent = ''
         slot.onclick = check
     }
+}
+
+function hardReset() {
+    player1Point = 0, player2Point = 0;
+    p1Points.textContent = 0
+    p2Points.textContent = 0
+    reset();
 }
 
 function validator(slotA, slotB, slotC) {
@@ -104,6 +134,39 @@ function validator(slotA, slotB, slotC) {
     }
 }
 
+function bestOf() {
+    if (bestOf1.classList == 'selected') {
+        if (player1Point == 1) {
+            alert('Player 1 Wins');
+            hardReset()
+        } else if (player2Point == 1) {
+            alert('Player 2 Wins')
+            hardReset()
+        }
+    } else if (bestOf3.classList == 'selected') {
+        if (player1Point == 2) {
+            alert('Player 1 Wins');
+            hardReset()
+        } else if (player2Point == 2) {
+            alert('Player 2 Wins')
+            hardReset()
+        } else {
+            setTimeout(reset, 1500)
+        }
+    } else if (bestOf5.classList == 'selected') {
+        if (player1Point == 3) {
+            alert('Player 1 Wins');
+            hardReset()
+        } else if (player2Point == 3) {
+            alert('Player 2 Wins')
+            hardReset()
+        } else {
+            setTimeout(reset, 1500)
+        }
+    } else {
+        setTimeout(reset, 1500)
+    }
+}
 
 
 
