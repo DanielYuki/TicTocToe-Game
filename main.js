@@ -63,7 +63,7 @@ applyChanges.onclick = () => {
 let turn = 0
 function check() {
     if (this.textContent == player1Symbol || this.textContent == player2Symbol) {
-        console.log('ja fui cricado')
+        console.log('Nope')
         addAnimation(this);
     } else {
         turn++
@@ -101,7 +101,7 @@ function verify() {
             player2Point++
             p2Points.textContent = player2Point;
         }
-        setTimeout(bestOf,100);
+        setTimeout(bestOf, 100);
     }
     else if (turn === 9) {
         console.log('old')
@@ -168,6 +168,23 @@ function bestOf() {
     }
 }
 
+//CHECK RANDOM SLOT(AKA "STUPID AI")
+function checkRandomSlot() {
+    let randomNumber = Math.floor(Math.random() * Math.floor(9));
+    let randomSlot = slots[randomNumber];
+    if (randomSlot.textContent == player1Symbol || randomSlot.textContent == player2Symbol) {
+        console.log('Nope')
+        checkRandomSlot();
+    } else {
+        turn++
+        if (turn % 2) {
+            randomSlot.textContent = player1Symbol;
+        } else {
+            randomSlot.textContent = player2Symbol
+        }
+        verify()
+    }
+}
 
 
 // Detects if device is on iOS 
