@@ -43,6 +43,16 @@ showSettings.onclick = () => {
     settings.classList.toggle('showSettings');
     game.classList.toggle('blurTableGame');
 }
+game.onclick = () => {
+    settings.classList.remove('showSettings');
+    game.classList.remove('blurTableGame');
+}
+
+let cpuButton = document.querySelector('.onoffswitch');
+let cpuOn = false;
+cpuButton.onclick = () => {
+    cpuButton.classList.toggle('cpuOn')
+}
 
 applyChanges.onclick = () => {
     if (player1SymbolInput.value == '') {
@@ -54,6 +64,11 @@ applyChanges.onclick = () => {
         player2SymbolInput.value = '⭕'
     } else {
         player2Symbol = player2SymbolInput.value
+    }
+    if (cpuButton.classList == 'onoffswitch cpuOn') {
+        // cpuOn = true;
+    } else {
+        cpuOn = false;
     }
     hardReset();
     console.log(player1Symbol)
@@ -69,10 +84,14 @@ function check() {
         turn++
         if (turn % 2) {
             this.textContent = player1Symbol;
+            verify()
+            if (cpuOn) {
+                setTimeout(checkRandomSlot, 250)
+            }
         } else {
             this.textContent = player2Symbol
+            verify()
         }
-        verify()
     }
 }
 
@@ -168,21 +187,18 @@ function bestOf() {
     }
 }
 
-//CHECK RANDOM SLOT(AKA "STUPID AI")
+//CHECK RANDOM SLOT(AKA "STUPID CPU")
 function checkRandomSlot() {
     let randomNumber = Math.floor(Math.random() * Math.floor(9));
     let randomSlot = slots[randomNumber];
     if (randomSlot.textContent == player1Symbol || randomSlot.textContent == player2Symbol) {
-        console.log('Nope')
-        checkRandomSlot();
-    } else {
-        turn++
-        if (turn % 2) {
-            randomSlot.textContent = player1Symbol;
-        } else {
-            randomSlot.textContent = player2Symbol
+        if (turn != 9) {
+            checkRandomSlot();
         }
+    } else {
+        randomSlot.textContent = player2Symbol
         verify()
+        turn++
     }
 }
 

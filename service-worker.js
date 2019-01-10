@@ -1,5 +1,5 @@
 // CACHE NAME
-let cacheName = 'TTT-v1';
+let cacheName = 'TTT-v2';
 
 // CACHE FILES
 let filesToCache = [
