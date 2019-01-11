@@ -66,7 +66,7 @@ applyChanges.onclick = () => {
         player2Symbol = player2SymbolInput.value
     }
     if (cpuButton.classList == 'onoffswitch cpuOn') {
-        // cpuOn = true;
+        cpuOn = true;
     } else {
         cpuOn = false;
     }
@@ -79,25 +79,85 @@ let turn = 0
 function check() {
     if (this.textContent == player1Symbol || this.textContent == player2Symbol) {
         console.log('Nope')
-        addAnimation(this);
+        addNopeAnimation(this);
     } else {
         turn++
         if (turn % 2) {
             this.textContent = player1Symbol;
-            verify()
-            if (cpuOn) {
-                setTimeout(checkRandomSlot, 250)
-            }
         } else {
             this.textContent = player2Symbol
-            verify()
         }
+        verify()
     }
 }
 
-function addAnimation(thisSlot) {
+function addNopeAnimation(thisSlot) {
     thisSlot.style.animation = 'shake 1s ease-in-out'
     setTimeout(gambiarra01 = () => { thisSlot.style.animation = '' }, 1500)
+}
+
+function addWinAnimation() {
+    switch (validator(slots, slots, slots)) {
+        case validator(slots[0], slots[1], slots[2]):
+            for (let i = 0; i < 3; i++) {
+                slots[i].style.animation = 'scaleUp 0.75s ease-in-out'
+                setTimeout(gambiarra01 = () => { slots[i].style.animation = '' }, 1000)
+            }
+            console.log('1Row')
+            break;
+        case validator(slots[3], slots[4], slots[5]):
+            for (let i = 3; i < 6; i++) {
+                slots[i].style.animation = 'scaleUp 0.75s ease-in-out'
+                setTimeout(gambiarra01 = () => { slots[i].style.animation = '' }, 1000)
+            }
+            console.log('2Row')
+            break;
+        case validator(slots[6], slots[7], slots[8]):
+            for (let i = 6; i < 9; i++) {
+                slots[i].style.animation = 'scaleUp 0.75s ease-in-out'
+                setTimeout(gambiarra01 = () => { slots[i].style.animation = '' }, 1000)
+            }
+            console.log('3Row')
+            break;
+        case validator(slots[0], slots[3], slots[6]):
+            for (let i = 0; i < 7; i += 3) {
+                slots[i].style.animation = 'scaleUp 0.75s ease-in-out'
+                setTimeout(gambiarra01 = () => { slots[i].style.animation = '' }, 1000)
+            }
+            console.log('1colum')
+            break;
+        case validator(slots[1], slots[4], slots[7]):
+            for (let i = 1; i < 8; i += 3) {
+                slots[i].style.animation = 'scaleUp 0.75s ease-in-out'
+                setTimeout(gambiarra01 = () => { slots[i].style.animation = '' }, 1000)
+            }
+            console.log('2colum')
+            break;
+        case validator(slots[2], slots[5], slots[8]):
+            for (let i = 2; i < 9; i += 3) {
+                slots[i].style.animation = 'scaleUp 0.75s ease-in-out'
+                setTimeout(gambiarra01 = () => { slots[i].style.animation = '' }, 1000)
+            }
+            console.log('3colum')
+            break;
+        case validator(slots[0], slots[4], slots[8]):
+            for (let i = 0; i < 9; i += 4) {
+                slots[i].style.animation = 'scaleUp 0.75s ease-in-out'
+                setTimeout(gambiarra01 = () => { slots[i].style.animation = '' }, 1000)
+            }
+            console.log('L2R')
+            break;
+        case validator(slots[2], slots[4], slots[6]):
+            for (let i = 2; i < 7; i += 2) {
+                slots[i].style.animation = 'scaleUp 0.75s ease-in-out'
+                setTimeout(gambiarra01 = () => { slots[i].style.animation = '' }, 1000)
+            }
+            console.log('R2L')
+            break;
+        default:
+            console.log('error')
+            break;
+    }
 }
 
 function verify() {
@@ -120,11 +180,16 @@ function verify() {
             player2Point++
             p2Points.textContent = player2Point;
         }
+        addWinAnimation()
         setTimeout(bestOf, 100);
     }
     else if (turn === 9) {
         console.log('old')
         setTimeout(reset, 1500)
+    } else {
+        if (cpuOn) {
+            setTimeout(checkRandomSlot, 250)
+        }
     }
 }
 
@@ -197,8 +262,30 @@ function checkRandomSlot() {
         }
     } else {
         randomSlot.textContent = player2Symbol
-        verify()
+        verifyCpu()
         turn++
+    }
+}
+
+function verifyCpu() {
+    if (validator(slots[0], slots[1], slots[2]) ||
+        validator(slots[3], slots[4], slots[5]) ||
+        validator(slots[6], slots[7], slots[8]) ||
+        validator(slots[0], slots[3], slots[6]) ||
+        validator(slots[1], slots[4], slots[7]) ||
+        validator(slots[2], slots[5], slots[8]) ||
+        validator(slots[0], slots[4], slots[8]) ||
+        validator(slots[2], slots[4], slots[6])) {
+        for (let slot of slots) {
+            slot.onclick = null;
+        }
+        player2Point++
+        p2Points.textContent = player2Point;
+        setTimeout(bestOf, 100);
+    }
+    else if (turn === 9) {
+        console.log('old')
+        setTimeout(reset, 1500)
     }
 }
 
