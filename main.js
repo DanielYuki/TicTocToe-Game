@@ -54,6 +54,11 @@ cpuButton.onclick = () => {
     cpuButton.classList.toggle('cpuOn')
 }
 
+
+let totalP1 = localStorage.getItem('totalP1')
+let totalP2 = localStorage.getItem('totalP2')
+
+
 applyChanges.onclick = () => {
     if (player1SymbolInput.value == '') {
         player1SymbolInput.value = '❌'
@@ -173,14 +178,17 @@ function verify() {
             slot.onclick = null;
         }
         if (turn % 2) {
+            totalP1++
             player1Point++
             p1Points.textContent = player1Point;
         }
         else {
+            totalP2++
             player2Point++
             p2Points.textContent = player2Point;
         }
         addWinAnimation()
+        localStorageData(totalP1,totalP2)
         setTimeout(bestOf, 100);
     }
     else if (turn === 9) {
@@ -281,6 +289,7 @@ function verifyCpu() {
         }
         player2Point++
         p2Points.textContent = player2Point;
+        addWinAnimation()
         setTimeout(bestOf, 100);
     }
     else if (turn === 9) {
@@ -288,6 +297,13 @@ function verifyCpu() {
         setTimeout(reset, 1500)
     }
 }
+
+// LocalStorage1.0
+function localStorageData(allP1points,allP2points) {
+    localStorage.setItem('totalP1',allP1points)
+    localStorage.setItem('totalP2',allP2points)
+}
+
 
 
 // Detects if device is on iOS 
