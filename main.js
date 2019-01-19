@@ -54,9 +54,11 @@ cpuButton.onclick = () => {
     cpuButton.classList.toggle('cpuOn')
 }
 
-
-let totalP1 = localStorage.getItem('totalP1')
-let totalP2 = localStorage.getItem('totalP2')
+//LOCAL STORAGE VARIABLES
+let totalP1 = localStorage.getItem('totalP1')||0
+let totalP2 = localStorage.getItem('totalP2')||0
+let totalDraw = localStorage.getItem('totalDraw')||0
+let totalCpuWin = localStorage.getItem('totalCpuWin')||0
 
 
 applyChanges.onclick = () => {
@@ -188,10 +190,10 @@ function verify() {
             p2Points.textContent = player2Point;
         }
         addWinAnimation()
-        localStorageData(totalP1,totalP2)
         setTimeout(bestOf, 100);
     }
     else if (turn === 9) {
+        totalDraw++
         console.log('old')
         setTimeout(reset, 1500)
     } else {
@@ -199,6 +201,7 @@ function verify() {
             setTimeout(checkRandomSlot, 250)
         }
     }
+    localStorageData(totalP1,totalP2,totalDraw,totalCpuWin)
 }
 
 function reset() {
@@ -287,21 +290,26 @@ function verifyCpu() {
         for (let slot of slots) {
             slot.onclick = null;
         }
+        totalCpuWin++
         player2Point++
         p2Points.textContent = player2Point;
         addWinAnimation()
         setTimeout(bestOf, 100);
     }
     else if (turn === 9) {
+        totalDraw++
         console.log('old')
         setTimeout(reset, 1500)
     }
+    localStorageData(totalP1,totalP2,totalDraw,totalCpuWin)
 }
 
 // LocalStorage1.0
-function localStorageData(allP1points,allP2points) {
+function localStorageData(allP1points,allP2points,Draws,cpuWins) {
     localStorage.setItem('totalP1',allP1points)
     localStorage.setItem('totalP2',allP2points)
+    localStorage.setItem('totalDraw',Draws)
+    localStorage.setItem('totalCpuWin',cpuWins)
 }
 
 
