@@ -21,6 +21,9 @@ let bestOf1 = document.querySelector('#match1');
 let bestOf3 = document.querySelector('#match3');
 let bestOf5 = document.querySelector('#match5');
 
+let showInfo = document.querySelector('.showInfo');
+let info = document.querySelector('section');
+
 bestOf1.onclick = () => {
     bestOf1.classList.toggle('selected');
     bestOf3.classList.remove('selected');
@@ -40,12 +43,29 @@ bestOf5.onclick = () => {
 }
 
 showSettings.onclick = () => {
-    settings.classList.toggle('showSettings');
-    game.classList.toggle('blurTableGame');
+    if (info.classList == 'showSection') {
+        info.classList.remove('showSection')
+        game.classList.remove('blurTableGame');
+    } else {
+        settings.classList.toggle('showSettings');
+        game.classList.toggle('blurTableGame');
+    }
 }
+
 game.onclick = () => {
     settings.classList.remove('showSettings');
     game.classList.remove('blurTableGame');
+    info.classList.remove('showSection')
+}
+
+showInfo.onclick = () => {
+    if (settings.classList == 'showSettings') {
+        settings.classList.remove('showSettings');
+        game.classList.remove('blurTableGame');
+    } else {
+        info.classList.toggle('showSection')
+        game.classList.toggle('blurTableGame');
+    }
 }
 
 let cpuButton = document.querySelector('.onoffswitch');
@@ -55,11 +75,19 @@ cpuButton.onclick = () => {
 }
 
 //LOCAL STORAGE VARIABLES
-let totalP1 = localStorage.getItem('totalP1')||0
-let totalP2 = localStorage.getItem('totalP2')||0
-let totalDraw = localStorage.getItem('totalDraw')||0
-let totalCpuWin = localStorage.getItem('totalCpuWin')||0
+let totalP1 = localStorage.getItem('totalP1') || 0
+let totalP2 = localStorage.getItem('totalP2') || 0
+let totalDraw = localStorage.getItem('totalDraw') || 0
+let totalCpuWin = localStorage.getItem('totalCpuWin') || 0
 
+let p1R = document.querySelector('#p1R')
+let p2R = document.querySelector('#p2R')
+let drawR = document.querySelector('#drawR')
+let cpuR = document.querySelector('#cpuR')
+p1R.innerHTML = totalP1;
+p2R.innerHTML = totalP2;
+drawR.innerHTML = totalDraw;
+cpuR.innerHTML = totalCpuWin;
 
 applyChanges.onclick = () => {
     if (player1SymbolInput.value == '') {
@@ -201,7 +229,7 @@ function verify() {
             setTimeout(checkRandomSlot, 250)
         }
     }
-    localStorageData(totalP1,totalP2,totalDraw,totalCpuWin)
+    localStorageData(totalP1, totalP2, totalDraw, totalCpuWin)
 }
 
 function reset() {
@@ -301,15 +329,19 @@ function verifyCpu() {
         console.log('old')
         setTimeout(reset, 1500)
     }
-    localStorageData(totalP1,totalP2,totalDraw,totalCpuWin)
+    localStorageData(totalP1, totalP2, totalDraw, totalCpuWin)
 }
 
 // LocalStorage1.0
-function localStorageData(allP1points,allP2points,Draws,cpuWins) {
-    localStorage.setItem('totalP1',allP1points)
-    localStorage.setItem('totalP2',allP2points)
-    localStorage.setItem('totalDraw',Draws)
-    localStorage.setItem('totalCpuWin',cpuWins)
+function localStorageData(allP1points, allP2points, Draws, cpuWins) {
+    localStorage.setItem('totalP1', allP1points)
+    localStorage.setItem('totalP2', allP2points)
+    localStorage.setItem('totalDraw', Draws)
+    localStorage.setItem('totalCpuWin', cpuWins)
+    p1R.innerHTML = totalP1;
+    p2R.innerHTML = totalP2;
+    drawR.innerHTML = totalDraw;
+    cpuR.innerHTML = totalCpuWin;
 }
 
 

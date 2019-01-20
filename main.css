@@ -2,6 +2,7 @@ body{
     margin: 0;
     font-family: sans-serif;
     background-color: #252630;
+    overflow: hidden;
 }
 
 header{
@@ -266,7 +267,65 @@ th{
 
 }
 
+footer{
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
 
+.showInfo{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.623);
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    font-family: initial;
+    font-weight: bold;
+}
+
+section{
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 80vw;
+    height: 50vh;
+    border-radius: 20px;
+    transition: 0.5s cubic-bezier(.95,-0.33,1,1.01);
+    /* z-index: 3 !important; */
+}
+
+.showSection{
+    transform: translateY(-130%);
+}
+
+.data div{
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+    width: 50vw;
+    font-size: 13pt;
+}
+
+.data div span{
+    font-size: 18pt;
+}
+
+#hello{
+    border-bottom: solid 1px black;
+    letter-spacing: 1px;
+    position: relative;
+    bottom: -6%;
+}
 
 /* SHOW MODAL IOS ONLY */
 #iosAlertBoxWebApp{
