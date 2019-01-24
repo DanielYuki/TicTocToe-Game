@@ -1,3 +1,3 @@
-*TIC-TOC-TOE GAME - WIP
+*TIC-TOC-TOE GAME
 
-I'm doing it just 4 fun and self improvement...
+Developed just 4fun and self improvement... that's all

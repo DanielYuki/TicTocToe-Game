@@ -319,6 +319,7 @@ function verifyCpu() {
             slot.onclick = null;
         }
         totalCpuWin++
+        totalP2++
         player2Point++
         p2Points.textContent = player2Point;
         addWinAnimation()

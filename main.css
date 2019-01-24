@@ -3,6 +3,7 @@ body{
     font-family: sans-serif;
     background-color: #252630;
     overflow: hidden;
+    height: 100vh;
 }
 
 header{
@@ -116,6 +117,7 @@ aside > div{
 aside input{
     padding: 2px;
     width: 6vw;
+    max-width: 50px;
     font-size: 4.5vw;
     border-radius: 0px;
 }
@@ -137,6 +139,8 @@ aside input{
 .roundBtn button{
     width: 13vw;
     height: 13vw;
+    max-width: 70px;
+    max-height: 70px;
     background-color: white;
     margin: 0;
     border: solid 0.5px lightgray;
@@ -163,6 +167,7 @@ aside input{
 /* SWITCH CPU BUTTON */
 .onoffswitch {
     height: 28px;
+    max-width: 75px;
     width: 15vw ;
     background-color: #EEEEEE;
     border: 2px solid #999999;
@@ -173,6 +178,7 @@ aside input{
 
 .onOffFlick{
     height: 100%;
+    max-width: 37.5px;
     width: 7.5vw;
     background-color: #999999;
     color: #999999;
@@ -186,13 +192,48 @@ aside input{
 }
 /* ---------------- */
 
-.applyChanges{
-    width: 50%;
-    border-radius: 10px;
+.applyChanges {
+    display: inline-block;
+    border-radius: 8px;
+    background-color: rgb(255, 0, 0);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
     padding: 5px;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+  
+.applyChanges span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+  
+.applyChanges span:after {
+    content: '✔';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+  
+.applyChanges:hover span {
+    padding-right: 30px;
+}
+  
+.applyChanges:hover span:after {
+    opacity: 1;
+    right: 0;
 }
 
 #upAndDown{
+    max-width: 150px;
     width: 25vw;
     height: 25px;
     background-color: white;
@@ -224,6 +265,8 @@ table{
     width: 90vw;
     background-color: white;
     font-size: 20vw;
+    max-height: 400px;
+    max-width: 400px;
 }
 
 tr{
@@ -236,7 +279,8 @@ th{
 }
 
 .scoreTable{
-    width: 35vw;
+    /* width: 35vw; */
+    width: 125px;
     padding: 10px;
     justify-content: space-evenly;
     display: flex;
@@ -249,7 +293,7 @@ th{
     padding: 5px;
     background-color: rgb(255, 42, 42);
     display: flex;
-    margin: 0 8vw;
+    margin: 0 30px;
     font-size: 10pt;
 }
 
@@ -297,34 +341,33 @@ section{
     display: flex;
     flex-direction: column;
     background-color: white;
+    max-width: 350px;
     width: 80vw;
     height: 50vh;
     border-radius: 20px;
-    transition: 0.5s cubic-bezier(.95,-0.33,1,1.01);
-    /* z-index: 3 !important; */
+    transition: 0.65s ease-in-out;
+    opacity: 0.5;
 }
 
 .showSection{
-    transform: translateY(-130%);
+    transform: translateY(-150%);
+    opacity: 1;
 }
 
 .data div{
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     display: flex;
+    max-width: 225px;
     width: 50vw;
-    font-size: 13pt;
+    font-size: 15pt;
 }
 
 .data div span{
     font-size: 18pt;
-}
-
-#hello{
-    border-bottom: solid 1px black;
-    letter-spacing: 1px;
-    position: relative;
-    bottom: -6%;
+    text-align: center;
+    width: 17.5%;
+    border-bottom: solid 2px red;
 }
 
 /* SHOW MODAL IOS ONLY */
@@ -398,3 +441,36 @@ section{
     }
 }
 /* ^ MODAL IOS ^ */
+
+/* BASIC MEDIA QUERY */
+@media only screen and (min-width:400px) {
+    th{
+        font-size: 63pt;
+    }
+    aside input{
+        font-size: 16pt;
+    }
+}
+
+@media only screen and (min-width:505px){
+    header {
+      display: none;
+    }
+    #actualGame{
+        height: 100vh;
+    }
+    aside{
+        transform: translateY(-96.1%);
+        height: 85vh;
+    }
+    h3{
+        font-size: 36pt;
+    }
+    h4,h5,aside input,.roundBtn button,.symbolsInput div{
+        font-size: 26pt;
+    }
+    /* .symbolsInput div{
+        font-size: 26pt;
+    } */
+}
+
