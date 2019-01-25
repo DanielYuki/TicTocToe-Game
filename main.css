@@ -1,9 +1,10 @@
-body{
+html,body{
     margin: 0;
     font-family: sans-serif;
     background-color: #252630;
     overflow: hidden;
-    height: 100vh;
+    position: relative;
+    height: 100%;
 }
 
 header{
